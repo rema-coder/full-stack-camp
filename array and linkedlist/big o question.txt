@@ -1,0 +1,16 @@
+we will answer this questions
+https://docs.google.com/document/d/10_Dq926QnS8wMnSD_4na1-0yc_ysMQHjpGO9JeXfRjw/edit?usp=sharing
+
+
+
+big o
+1- linear search O(n)
+2- 2- Linear O(n)
+3- Constant O(1)
+4- Linear O(n)
+5- Logarthimtic O(Log n)
+6- Square Root O( sqrt(n) )
+7- Linear O(n)
+8- Linear O(n)
+9- Quadratic O(n^2)
+10- O(log n ) + 1

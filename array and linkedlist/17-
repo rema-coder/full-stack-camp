@@ -1,0 +1,353 @@
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace _1
+{
+    public class node
+    {
+        //first thing we need a constructer
+        // node (object data, node next)
+        public node(object data, node next = null)
+        {
+            this.Data = data;
+            this.Next = next;
+        }
+
+        //private;
+        //object data contains the data of the node what we want to store in the list 
+        private object data;
+        //node next refrence to the next data in the list
+        private node next;
+        //public;
+        //data - get/set the data field
+        public object Data
+        {
+            get { return this.data; }
+            set { this.data = value; }
+        }
+        //next - get/set the next field
+        public node Next
+        {
+            get { return this.next; }
+            set { this.next = value; }
+        }
+    }
+    public class linkedlist
+    {
+        public node Next { get; set; }
+        //constructer;
+        //linkedlist()-intialize the privet field
+        public linkedlist()
+        {
+            this.head = null;
+            this.size = 0;
+        }
+        //private field:
+        //node head 
+        private node head;
+        //[]int size - the current size of the list
+        private int size;
+
+        //public:
+        // empty - if the list is empty
+        public bool empty
+        {
+            get { return this.size == 0; }
+        }
+        // count how many item are in the list
+        public void is_size()
+        {
+            node curr = head;
+            int x = 0;
+            while (curr != null)
+            {
+                curr = curr.Next;
+                x++;
+
+            }
+            Console.WriteLine("the count is " + x);
+        }
+
+        //to display the element
+        public void display()
+        {
+            node currentnode = this.head;
+
+            while (currentnode != null)
+            {
+                Console.Write(currentnode.Data + "->");
+                currentnode = currentnode.Next;
+
+            }
+            Console.WriteLine("null");
+        }
+        //to add new element
+        public void add(string data)
+        {
+            //we will define the new element
+            node newnode = new node(data);
+            if (head == null)
+            {
+                head = newnode;
+
+            }
+            else
+            {
+                node lastNode = head;
+                while (lastNode.Next != null)
+                {
+                    lastNode = lastNode.Next;
+                }
+                lastNode.Next = newnode;
+            }
+        }
+        // method to add element at any pothion we want
+        public void addpot(string data, int y)
+
+        {
+            node newnode = new node(data);
+            if (y == 0)
+            {
+                newnode.Next = head;
+                head = newnode;
+            }
+            else
+            {
+                node current = head;
+                for (int i = 0; i < y - 1; i++)
+                {
+                    if (current == null) return;
+                    current = current.Next;
+                }
+                newnode.Next = current.Next;
+                current.Next = newnode;
+            }
+            size++;
+        }
+        // methode to reverse the linkedlist
+        public void reverse()
+        {
+            node current = head;
+            node next = null;
+            node prev = null;
+            while (current != null)
+            {
+                 next = current.Next;   //store the next node
+                current.Next = prev;   //reverse the pointer
+                prev = current; //the prev move one step forward
+                current = next; //current move step forward
+            }
+            head = prev;
+        }
+        //methode to insert at the beggining
+        public void addatbeggining(string data)
+        {
+            node newnode = new node(data);
+            newnode.Next = head;
+            head = newnode;
+        }
+        //methode to insert at the end of the link
+        public void add_in_the_end(string data)
+        {
+            node current = head;
+            node newnode = new node(data);
+            for (int i = 0; i == size; i++)
+            {
+                current = current.Next;
+            }
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = newnode;
+        }
+        //to get a node in an existing singly linked list
+        public void get_node(int y)
+        {
+            int counter = 0;
+            node current = head;
+            while (counter < y)
+            {
+                counter++;
+                current = current.Next;
+            }
+            Console.WriteLine(current.Data);
+        }
+        // find the first index that matches a given element. Return -1 for no matching.
+        public int matches(string data)
+        {
+            node current = head;
+            int counter = 0;
+            while (current != null)
+            {
+
+                if (current.Data.Equals(data))
+                {
+                    return counter;
+                }
+                else
+                {
+                    counter++;
+                    current = current.Next;
+                }
+            }
+            return -1;
+
+        }
+        //check if the list is empty
+        public bool empty1()
+        {
+            node current = head.Next;
+            if (current == null)
+            {
+                return true;
+
+            }
+            return false;
+        }
+        //empty a singly linked list by pointing the head towards null.
+        public void empty_thelist()
+        {
+            head.Next = null;
+            head = null;
+        }
+        //removes the node from the singly linked list at the specified index.
+        public void remove(int x)
+        {
+            node current = head;
+            int counter = 0;
+            while (current != null)
+            {
+                if (counter != x)
+                {
+                    counter++;
+                    current = current.Next;
+                }
+                else
+                {
+                    current.Data = null;
+                    counter++;
+                    current = current.Next;
+
+                }
+            }
+        }
+        public void size1()
+        {
+            node curr = head;
+            int x = 0;
+            while (curr != null)
+            {
+                curr = curr.Next;
+                x++;
+
+            }
+            Console.WriteLine("the size is " + x);
+        }
+        //removes the first element from a Singly Linked list.
+        public void remove_head() { 
+            head.Data = null;
+        }
+        //removes the tail 
+        public void remove_tail()
+        {
+            node current = head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Data = null;
+        }
+        // convert a Singly Linked list into an array.
+        public string[] toArray()
+        {
+            List<string> list = new List<string>();
+            node current = head;
+            while (current != null)
+            {
+                list.Add(current.Data.ToString());
+                current = current.Next;
+            }
+            return list.ToArray();
+        }
+        //program to convert a Singly Linked list into a string.
+        public string into_string()
+        {
+            string x = "";
+            node current = head;
+            while(current != null)
+            {
+                x += current.Data.ToString();
+                current = current.Next;
+            }
+            return x;
+            
+        }
+        // get the index of an element in a Singly Linked list
+        public void get_index(string x) {
+            node current = head;
+            int index = 0;
+            while (current != null)
+            {
+                if (current.Data.Equals(x))
+                {
+                    Console.WriteLine(index);
+                }
+                index++;
+                current = current.Next;
+            }
+            
+        
+        }
+
+    }
+    internal class Program
+        {
+            static void Main(string[] args)
+            {
+                linkedlist list = new linkedlist();
+                
+                list.add("reema");
+                list.add("ragheed");
+                list.add("ali");
+                //list.add("hello");
+                list.display();
+                //Console.WriteLine("is it empty?" + list.empty);
+                //list.reverse();
+                // list.display();
+                //list.is_size();
+                //list.addpot("third", 0);
+                //list.display();
+                //list.addatbeggining("helloo");
+                //list.display();
+                //list.add_in_the_end("hello");
+                //list.display();
+                //list.get_node(2);
+                //Console.WriteLine(list.matches("ree"));
+                //Console.WriteLine(list.empty1());
+                //list.empty_thelist();
+                //list.remove(0);
+                //list.size1();
+                //list.remove_head();
+                //list.remove_tail();
+                //list.reverse();
+             //   string[] array = list.toArray();
+              //  foreach (var item in array)
+           // {
+           //     Console.WriteLine(item);
+          //  }
+               // Console.WriteLine(list.into_string());
+                //list.display();
+                list.get_index("ali");
+                Console.ReadLine();
+
+            }
+        }
+    }

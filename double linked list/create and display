@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace double_linked_list
+{
+    public class doublnode
+    {
+        //make a constructer
+        public object Data { get; set; }
+        public doublnode Next { get; set; }
+        public doublnode Previos { get; set; }
+        public doublnode(object data, doublnode next = null, doublnode prev = null)
+        {
+            this.Data = data;
+            this.Next = next;
+            this.Previos = prev;
+        }
+    }
+    public class doublelinkedlist
+    {
+        private doublnode head;
+        private doublnode tail;
+        private int size;
+        public doublelinkedlist()
+        {
+            this.head = null;
+            this.tail = null;
+            this.size = 0;
+        }
+        //to add new element
+        public void add(string data)
+        {
+            doublnode newnode = new doublnode(data);
+            if (head == null)
+            {
+                head = newnode;
+                tail = newnode;
+            }
+            else
+            {
+                tail.Next = newnode;
+                newnode.Previos = tail;
+                tail = newnode;
+            }
+        }
+            //to display the element
+        public void display()
+        {
+            doublnode current = head;
+            while (current != null)
+            {
+                Console.Write(current.Data + "->");
+                current = current.Next;
+            }
+            Console.Write("null");
+            
+        }
+       
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            doublelinkedlist list = new doublelinkedlist();
+            list.add("reema");
+            list.add("ragheed");
+            list.add("ali");
+            list.display();
+            
+        }
+    }
+}

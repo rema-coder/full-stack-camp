@@ -29,3 +29,24 @@ public int find(string data)
     }
     return -1;
 }
+//find if the element is present in the list
+public bool elementcheck(string data)
+{
+    doublnode current = head;
+    int counter = 0;
+    while (current != null)
+    {
+
+        if (current.Data.Equals(data))
+        {
+            return true;
+        }
+        else
+        {
+            counter++;
+            current = current.Next;
+        }
+    }
+    return false;
+
+}

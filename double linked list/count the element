@@ -1,0 +1,12 @@
+ //count the element
+ public void count()
+ {
+     doublnode current = head;
+     int count = 0;
+     while (current != null)
+     {
+         count++;
+         current = current.Next;
+     }
+     Console.WriteLine(count);
+ }

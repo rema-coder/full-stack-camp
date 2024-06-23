@@ -1,0 +1,6 @@
+//empty a singly linked list by pointing the head towards null.
+public void empty_thelist()
+{
+    head.Next = null;
+    head = null;
+}

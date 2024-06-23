@@ -1,0 +1,37 @@
+//removes the node from the singly linked list at the specified index.
+public void remove(int x)
+{
+    doublnode current = head;
+    int counter = 0;
+    while (current != null)
+    {
+        if (counter != x)
+        {
+            counter++;
+            current = current.Next;
+        }
+        else
+        {
+            current.Data = null;
+            counter++;
+            current = current.Next;
+
+        }
+    }
+
+}
+// remove first element from a Singly Linked list.
+public void remove_head()
+{
+    head.Data = null;
+}
+//remove the tail
+public void remove_tail()
+{
+    doublnode current = head;
+    while (current.Next != null)
+    {
+        current = current.Next;
+    }
+    current.Data = null;
+}

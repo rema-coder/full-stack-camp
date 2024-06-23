@@ -1,0 +1,15 @@
+public void reverse()
+{
+    doublnode temp = null;
+    doublnode current = head;
+    while (current != null)
+    {
+        temp = current.Previos; //store the next node
+        current.Previos = current.Next; //reverse the pointer
+        current.Next = temp;
+        current = current.Previos;
+    }
+    head = temp.Previos;
+    
+
+}

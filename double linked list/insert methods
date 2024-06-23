@@ -1,0 +1,47 @@
+    //insert at any pothion
+    public void insert(string data, int index)
+    {
+        doublnode newnode = new doublnode(data);
+        if (index == 0)
+        {
+            head = newnode;
+        }
+        else
+        {
+            doublnode current = head;
+            for (int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+            newnode.Next = current.Next;
+            current.Next = newnode;
+
+        }
+        size++;
+    }
+    //insert at the begining
+    public void begginig(string data)
+    {
+        doublnode newnode = new doublnode(data);
+        newnode.Next = head;
+        head = newnode;
+
+    }
+    // at the end
+    public void end(string data)
+    {
+        doublnode newnode = new doublnode(data);
+        doublnode current = head;
+        if (head == null)
+        {
+            head= newnode;
+            return;
+        }
+        while (current.Next != null)
+        {
+            current = current.Next;
+        }
+        current.Next= newnode;
+        
+    }
+}

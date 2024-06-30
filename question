@@ -1,0 +1,42 @@
+Write a C# program that simulates the loading and unloading of shipments using a stack. The program should use recursion to process the unloading of shipments.
+
+
+Details:
+Each shipment can be represented by a unique integer ID.
+The order of loading shipments is provided as a list of integers.
+The program should recursively unload shipments and display each step.
+company deals with numerous shipments that must be processed in a specific order due to the constraints of loading and unloading. Each shipment has to be loaded in the order it arrives and unloaded in the reverse order (Last In, First Out).
+using System;
+using System.Collections.Generic;
+
+namespace ShipmentStack
+{
+    class Program
+    {
+        static void Main(string[] args)
+        { 
+            List<int> shipment1 = new List<int> { 1, 2, 3, 4, 5 };
+            Stack<int> shipmentStack = new Stack<int>();
+            foreach (var shipment in shipment1)
+            {
+                shipmentStack.Push(shipment);
+                Console.WriteLine(shipment);
+            }
+
+            UnloadShipments(shipmentStack);
+        }
+
+        static void UnloadShipments(Stack<int> shipmentStack)
+        {
+            if (shipmentStack.Count == 0)
+            {
+                return;
+            }
+
+            int topShipment = shipmentStack.Pop();
+            Console.WriteLine(topShipment);
+
+            UnloadShipments(shipmentStack);
+        }
+    }
+}

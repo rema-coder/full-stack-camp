@@ -1,0 +1,458 @@
+1. Write a C# program to implement a stack with push and pop operations. Find the top element of the stack and check if the stack is empty or not.
+ using System;
+using System.Collections.Generic;
+
+namespace ShipmentStack
+{
+    class Program { 
+        static void Main(string[] args)
+        {
+            Stack<int> numbers = new Stack<int>();
+            numbers.Push(1);
+            numbers.Push(2);
+            numbers.Push(3);
+            numbers.Push(4);
+
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("*****");
+            //pprint the top element
+            int x = numbers.Peek();
+            Console.WriteLine(x);
+            Console.WriteLine("****");
+            numbers.Pop();
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
+
+2. Write a C# program to sort the elements of a given stack in descending order.
+using System;
+using System.Collections.Generic;
+
+namespace stackprogram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> numbers = new Stack<int>();
+            numbers.Push(14);
+            numbers.Push(2);
+            numbers.Push(30);
+            numbers.Push(15);
+
+            Console.WriteLine("Original stack:");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("*****");
+
+            // Sort the stack and print it inside the sortelement function
+            //sortelement(numbers);
+            sortelement2(numbers);
+        }
+
+        static public void pop1(Stack<int> numbers)
+        {
+            numbers.Pop();
+            Console.WriteLine("Stack after pop operation:");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        // Function to sort elements des
+        static public void sortelement(Stack<int> numbers)
+        {
+            // Create a new stack for the sorted elements
+            Stack<int> sortedStack = new Stack<int>();
+
+            while (numbers.Count > 0)
+            {
+                int temp = numbers.Pop();
+                while (sortedStack.Count > 0 && sortedStack.Peek() > temp)
+                { 
+                    numbers.Push(sortedStack.Pop());
+                }
+                sortedStack.Push(temp);
+            }
+            while (sortedStack.Count > 0)
+            {
+                numbers.Push(sortedStack.Pop());
+            }
+
+            // Print the sorted stack
+            Console.WriteLine("Sorted stack:");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        //function to sort the element aes
+        static public void sortelement2(Stack<int> numbers)
+        {
+            // Create a new stack for the sorted elements
+            Stack<int> sortedStack = new Stack<int>();
+
+            while (numbers.Count > 0)
+            {
+                int temp = numbers.Pop();
+                while (sortedStack.Count > 0 && sortedStack.Peek() > temp)
+                {
+                    numbers.Push(sortedStack.Pop());
+                }
+                sortedStack.Push(temp);
+            }
+            while (sortedStack.Count > 0)
+            {
+                numbers.Push(sortedStack.Pop());
+            }
+
+            // Print the sorted stack
+            Console.WriteLine("Sorted stack:");
+            foreach (var item in numbers)
+            {
+                sortedStack.Push(item);
+            }
+            foreach (var item in sortedStack)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
+3-
+using System;
+using System.Collections.Generic;
+
+namespace stackprogram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> numbers = new Stack<int>();
+            numbers.Push(14);
+            numbers.Push(2);
+            numbers.Push(30);
+            numbers.Push(15);
+
+            Console.WriteLine("Original stack:");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("*****");
+
+            // Sort the stack and print it inside the sortelement function
+            sortelement(numbers);
+        }
+
+        static public void pop1(Stack<int> numbers)
+        {
+            numbers.Pop();
+            Console.WriteLine("Stack after pop operation:");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        // Function to sort elements
+        static public void sortelement(Stack<int> numbers)
+        {
+            // Create a new stack for the sorted elements
+            Stack<int> sortedStack = new Stack<int>();
+
+            while (numbers.Count > 0)
+            {
+                int temp = numbers.Pop();
+                while (sortedStack.Count > 0 && sortedStack.Peek() > temp)
+                { 
+                    numbers.Push(sortedStack.Pop());
+                }
+                sortedStack.Push(temp);
+            }
+            while (sortedStack.Count > 0)
+            {
+                numbers.Push(sortedStack.Pop());
+            }
+
+            // Print the sorted stack
+            Console.WriteLine("Sorted stack:");
+            foreach (var item in numbers)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
+4. Write a C# program to reverse the elements of a given stack.
+  
+//reverse the stack
+        static public void reverse(Stack<int> numbers)
+        {
+            Stack<int> newstack = new Stack<int>();
+            while (numbers.Count > 0)
+            {
+                newstack.Push(numbers.Pop());
+            }
+            Console.WriteLine("the reverse stack");
+            foreach (var item in newstack)
+            {
+                Console.WriteLine(item);
+            }
+        }
+5. Write a C# program to find the maximum element in a stack.
+        //find the maximum element
+
+        static public void max(Stack<int> numbers)
+        {
+            int max = numbers.Pop();
+            while (numbers.Count > 0)
+            {
+                while (max < numbers.Peek())
+                {
+                    max = numbers.Pop();
+                }
+                numbers.Pop();
+            }
+            Console.WriteLine("the max number :" + max);
+        }
+    }
+}
+6. Write a C# program to find the minimum element in a stack.
+//find the minimum element
+        static public void min(Stack<int> numbers)
+        {
+            int min = numbers.Pop();
+            while (numbers.Count > 0)
+            {
+                while (min > numbers.Peek())
+                {
+                    min = numbers.Pop();
+                }
+                numbers.Pop();
+            }
+            Console.WriteLine("the min number :" + min);
+        }
+7. Write a C# program to remove all the elements from a given stack.
+//remove all the elements from a given stack.
+        static public void remove(Stack<int> numbers)
+        {
+            numbers.Clear();
+            Console.WriteLine("null");
+        }
+8. Write a C# program to remove specified element from a given stack.
+// to remove specified element from a given stack.
+        static public void remove_element(Stack<int> numbers,int x)
+        {
+            Stack<int> newstack = new Stack<int>();
+            while(numbers.Count > 0)
+            {
+                if (numbers.Peek() == x)
+                {
+                    numbers.Pop();
+                }
+                newstack.Push(numbers.Pop());
+            }
+            foreach (var item in newstack)
+            {
+                Console.WriteLine(item);
+            }
+        }
+9. Write a C# program to count all the elements in a given stack.
+// to count all the elements in a given stack.
+        static public void count(Stack<int> numbers)
+        {
+            Console.WriteLine(numbers.Count);
+        }
+10. Write a C# program to count specified element in a given stack.
+//to count specified element in a given stack.
+        static public void count_specific_element(Stack<int> numbers,int x)
+        {
+            int counter = 0;
+            while (numbers.Count > 0)
+            {
+                if (numbers.Peek() == x)
+                {
+                    counter++;
+                    numbers.Pop();
+                }
+                numbers.Pop();
+            }
+            Console.WriteLine(counter);
+        }
+11. Write a C# program to implement a stack that checks if a given element is present or not in the stack.
+// checks if a given element is present or not in the stack.
+        static public void check(Stack<int> numbers,int x)
+        {
+            int y = 0;
+            while (numbers.Count > 0)
+            {
+                if (numbers.Peek() == x)
+                {
+                    y++;
+                    numbers.Pop();
+                }
+                numbers.Pop();
+
+            }
+            if (y == 0)
+            {
+                Console.WriteLine("not found");
+            }
+            Console.WriteLine("its in the stack");
+        }
+
+
+    }
+12. Write a C# program to remove duplicates from a given stack.
+
+13. Write a C# program to find the top and bottom elements of a given stack.
+   //find the top and bottom elements of a given stack.
+        static public void find(Stack<int> numbers)
+        {
+            Console.WriteLine("the top is :"+ numbers.Peek());
+            while (numbers.Count > 1)
+            {
+              numbers.Pop();
+            }
+            {
+                Console.WriteLine("the bottom: " + numbers.Peek());
+            }
+        }
+14. Write a C# program to rotate the stack elements to the left direction.
+  //to rotate the stack elements to the left direction.
+        static public void rotate(Stack<int> numbers)
+        {
+            Stack<int> tmp = new Stack<int>();
+            int peek = numbers.Pop();
+            while (numbers.Count > 0)
+            {
+                tmp.Push(numbers.Pop());
+            }
+            numbers.Push(peek);
+            while (tmp.Count > 0)
+            {
+                numbers.Push(tmp.Pop());
+            }
+            while (numbers.Count > 0)
+            {
+                Console.WriteLine(numbers.Pop());
+            }
+        }
+15. Write a C# program to swap the top two elements of a given stack.
+ //to swap the top two elements of a given stack.
+        static public void swap(Stack<int> numbers)
+        {
+            Stack<int> tmp = new Stack<int>();
+            int first = numbers.Pop();
+            int second = numbers.Pop();
+            tmp.Push(second);
+            tmp.Push(first);
+            while (numbers.Count > 0)
+            {
+                tmp.Push(numbers.Pop());
+            }
+            while (tmp.Count > 0)
+            {
+                numbers.Push(tmp.Pop());
+            }
+            while (numbers.Count > 0)
+            {
+                Console.WriteLine(numbers.Pop());
+            }
+
+        }
+16. Write a C# program to get the nth element from the top of the stack.
+ // get the nth element from the top of the stack.
+        static public void nth_element(Stack<int> numbers, int index)
+        {
+            while (numbers.Count > 0)
+            {
+                if (numbers.Count == index)
+                {
+                    Console.WriteLine("the element is :" + numbers.Pop());
+                }
+                numbers.Pop();
+            }
+        }
+17. Write a C# program to merge two stacks into one.
+//to merge two stacks into one.
+        static public void merge(Stack<int> numbers)
+        {
+            Stack<int> newstack = new Stack<int>();
+            newstack.Push(1);
+            newstack.Push(2);
+            newstack.Push(3);
+            Stack<int> tmp = new Stack<int>();
+            while (numbers.Count > 0 && newstack.Count > 0)
+            {
+                tmp.Push(numbers.Pop());
+                tmp.Push(newstack.Pop());
+            }
+            if (numbers.Count > 0)
+            {
+                tmp.Push(numbers.Pop());
+            }
+            else { 
+                tmp.Push(newstack.Pop()); }
+            while (tmp.Count > 0)
+            {
+                numbers.Push(tmp.Pop());
+            }
+            while (numbers.Count > 0)
+            {
+                Console.WriteLine(numbers.Pop());
+            }
+        }
+18. Write a C# program that implements a stack and checks if a stack is a subset of another stack
+static public bool IsSubset(Stack<int> numbers, Stack<int> newset)
+    {
+        List<int> tempSuperset = new List<int>(newset);
+        foreach (int element in numbers)
+        {
+            if (!tempSuperset.Contains(element))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+19. Write a C# program that implements a stack and checks if two stacks are equal.
+ // implements a stack and checks if two stacks are equal.
+        static public bool equal(Stack<int> numbers)
+        {
+            Stack<int> tmp = new Stack<int>();
+            tmp.Push(1);
+            tmp.Push(2);
+            if (numbers.Count != tmp.Count)
+            {
+                return false;
+            }
+            Stack<int> tempStack1 = new Stack<int>(new Stack<int>(numbers));
+            Stack<int> tempStack2 = new Stack<int>(new Stack<int>(tmp));
+
+            // Compare elements of both stacks
+            while (tempStack1.Count > 0)
+            {
+                if (tempStack1.Pop() != tempStack2.Pop())
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }

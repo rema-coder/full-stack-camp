@@ -435,3 +435,61 @@ namespace ConsoleApp5
         }
     }
 }
+Sort an Array of Tuples
+
+namespace quiksort
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           //Sort an Array of Tuples.
+
+            //creat asingel element as atuple.
+            (int, string) fruit1 = (3, "apple");
+            (int, string) fruit2 = (1, "banana");
+            (int, string) fruit3 = (2,"kiwi");
+            //creat array contions this tuples.
+            (int, string)[] fruits= { fruit1, fruit2, fruit3 };
+
+            Quiksort(fruits, 0, fruits.Length-1);
+            //print the array.
+            for (int i = 0; i <= fruits.Length-1; i++)
+            {
+                Console.Write($"({fruits[i].Item1},{fruits[i].Item2})");
+            }
+            Console.ReadLine();
+        }
+        public static void Quiksort((int, string)[] fruits, int start, int end) 
+        {
+            if (start < end)
+            {
+             int p=partition(fruits, start,end);
+                Quiksort(fruits, start,p-1);
+                Quiksort(fruits, p+1,end);    
+            }
+        }
+        public static int partition((int, string)[] array,int start,int end)
+        {
+         (int, string)pivot = array[end];
+         int index=start-1;
+            for (int i = start; i <end; i++)
+            {
+                if(array[i].Item1<=pivot.Item1)
+                {
+                  index++;
+                  swap(array,i,index);  
+                }
+            }
+         swap(array,end,index+1);
+         return index+1;
+        }
+        public static void swap((int, string)[] array,int i,int index) 
+        {
+        (int, string) temp = array[i];
+         array[i] = array[index];
+         array[index] = temp;
+        }
+
+       
+    }
